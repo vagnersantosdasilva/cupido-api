@@ -14,5 +14,5 @@ app.use('/cupido',profilesRoute);
 app.use('/cupido',messages);
 app.use('/cupido/users',usersRoute);
 
-//app.listen(3010);
+app.listen(8080);
 module.exports = app;
