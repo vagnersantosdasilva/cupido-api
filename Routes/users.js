@@ -46,7 +46,7 @@ router.post('/create',async (req,res) =>{
     }
 });
 
-router.put('/', async (req,res) =>{
+router.put('/',authorization, async (req,res) =>{
 
     try {
         const {id, username, password, name} = req.body;

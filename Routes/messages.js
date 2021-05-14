@@ -33,7 +33,7 @@ router.post('/sendmail',authorization,async (req,res) => {
 
 });
 
-router.get ('/messages/:id' , authorization,async (req,res)=>{
+router.get ('/messages/:id' ,authorization, async (req,res)=>{
 
     try {
         const {id} = req.params;
@@ -54,7 +54,7 @@ router.get ('/messages/:id' , authorization,async (req,res)=>{
 
 });
 
-router.post ('/sendmessage',  authorization,(req,res)=>{
+router.post ('/sendmessage',authorization,  (req,res)=>{
 
         const {id_to,id_from,anonymous,message} = req.body;
         knex('messages').insert ({
