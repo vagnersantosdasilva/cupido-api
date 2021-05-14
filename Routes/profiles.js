@@ -3,7 +3,7 @@ const router = express.Router();
 const knex = require("../Config/db");
 const authorization = require('../Authorization/auth');
 
-router.get('/profiles',authorization,async (req,res)=>{
+router.get('/profiles',async (req,res)=>{
 
     try {
         const {username} = req.params;
@@ -18,12 +18,13 @@ router.get('/profiles',authorization,async (req,res)=>{
         return res.json(data);
 
     }catch (error){
+        console.log('Chamada a profiles '+error.message);
         return res.status(500).send({error:error.message});
     }
 
 })
 
-router.get ('/profiles/:idUser',authorization,async(req,res)=>{
+router.get ('/profiles/:idUser',async(req,res)=>{
     try {
         const {idUser} = req.params;
 
@@ -44,7 +45,7 @@ router.get ('/profiles/:idUser',authorization,async(req,res)=>{
 
 });
 
-router.get ('/profile/:username',authorization,async(req,res)=>{
+router.get ('/profile/:username',async(req,res)=>{
     try {
         const {username} = req.params;
 
@@ -60,12 +61,13 @@ router.get ('/profile/:username',authorization,async(req,res)=>{
         return res.json(data[0]);
 
     }catch (error){
+        console.log('Chamada a profile :username '+error.message);
         return res.status(500).send({error:error.message});
     }
 
 });
 
-router.post( '/profile' ,authorization, async(req,res)=>{
+router.post( '/profile' , async(req,res)=>{
     try {
         const {id_user ,sex ,birth, video,text} = req.body;
 
@@ -87,7 +89,7 @@ router.post( '/profile' ,authorization, async(req,res)=>{
 
 });
 
-router.put( '/profile' ,authorization, async(req,res)=>{
+router.put( '/profile' , async(req,res)=>{
     try {
         const {id_user, sex, video, text , birth} = req.body;
 

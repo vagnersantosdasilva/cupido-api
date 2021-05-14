@@ -8,7 +8,7 @@ const config = require ('../Config/config');
 
 const createUserToken = (userId,username,displayname)=>{
     return 'Bearer '
-        +jwt.sign({id:userId , username:username , displayname:displayname},
+        +jwt.sign({username:username , displayname:displayname},
         config.jwt_pass,{expiresIn:config.jwt_expires_in});
 }
 
@@ -46,7 +46,7 @@ router.post('/create',async (req,res) =>{
     }
 });
 
-router.put('/', authorization,async (req,res) =>{
+router.put('/', async (req,res) =>{
 
     try {
         const {id, username, password, name} = req.body;
@@ -82,7 +82,7 @@ router.post ('/login' , async (req,res)=>{
 
         if (((user.username===username) && (await bcrypt.compare(password ,user.password)) )) {
             return res.send({
-                token: createUserToken(user.id, user.username, user.name)
+                token: createUserToken(user.username, user.name)
             });
         }
         return res.status(400).send({error:'Erro de login e senha!'});
