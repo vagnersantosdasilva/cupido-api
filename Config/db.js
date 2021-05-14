@@ -5,7 +5,7 @@ const knex = require('knex')({
     connection: {
         host : 'cupido-database.cmiihtpdrpfq.us-east-1.rds.amazonaws.com',
         user : 'admin',
-        password : '#F1a2c5h4_nvl',
+        password : 'xxxx',
         database : 'cupido'
     }
 });
